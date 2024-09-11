@@ -1,0 +1,64 @@
+#/*****************************************************************************\
+#
+#  2D Burgers' simulation
+#
+#  Version 0.1.0
+#  Copyright (c) 2024, Somrath Kanoksirirath <somrathk@gmail.com>
+#  All rights reserved under BSD 3-clause license.
+#*******************************************************************************
+#
+#  makefile:
+#    Top-most level makefile
+#
+#\*****************************************************************************/
+
+CXX = mpiicx
+
+INCLUDES = -I./framework -I./component -I./core
+LIBRARIES = -L./framework -L./component -L./core
+
+CPPFLAGS = -Wall #-Wextra -Wcast-align -Wdouble-promotion -Wshadow -Wpedantic \
+	   #-Wuseless-cast -Wconversion 
+           #-Weffc++
+           #-fopt-info-vec-missed -fopt-info-vec-optimized
+CXXFLAGS = -march=native -O3 -fiopenmp $(INCLUDES)
+EXTFLAGS = $(shell adios2-config --cxx-flags)
+LDFLAGS = -fiopenmp -lstdc++ $(LIBRARIES) $(shell adios2-config --cxx-libs)
+
+TARGET = BSIM
+cpp_files = ./framework/datatype.cpp \
+            ./framework/datetime.cpp \
+            ./component/parser.cpp \
+            ./component/io_adios2.cpp \
+            ./component/cubicgrid2d.cpp \
+            ./core/root.cpp \
+            ./core/variable.cpp \
+            ./core/paralleldomain.cpp \
+            ./core/dynamics.cpp \
+            ./core/simulation.cpp \
+            ./main.cpp
+objects = $(cpp_files:.cpp=.o)
+
+all: $(TARGET)
+
+./component/io_adios2.o : ./component/io_adios2.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(EXTFLAGS) -c -o $@ $<
+./core/paralleldomain.o : ./core/paralleldomain.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(EXTFLAGS) -c -o $@ $<
+./core/simulation.o : ./core/simulation.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(EXTFLAGS) -c -o $@ $<
+./main.o : ./main.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(EXTFLAGS) -c -o $@ $<
+
+$(TARGET): $(objects)
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+.PHONY : clean
+clean :
+	rm -f $(TARGET) $(objects)
+
+
+
+
+
+

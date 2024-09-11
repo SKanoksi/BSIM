@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<adios-config>
+	<io name="BP_Write_CheckPoint">
+		<engine type="BP4">
+			<parameter key="Profile" value="Off"/>
+			<!--parameter key="Threads" value="2"/-->
+			<!--parameter key="MaxBufferSize" value="64Mb"/-->
+			<!--parameter key="InitialBufferSize" value="1Mb"/-->
+			<!--parameter key="BufferGrowthFactor" value="2"/-->
+			<!--parameter key="NumAggregators" value="0"/-->
+			<!--parameter key="StatsLevel" value="0"/-->
+			<!--parameter key="BurstBufferPath" value="/temp"/-->
+			<!--parameter key="BurstBufferVerbose" value="0"/-->
+		</engine>
+		<transport type="File">
+			<parameter key="Library" value="POSIX"/>
+		</transport>
+	</io>
+	<io name="BP_Write_Output">
+		<engine type="BP4">
+			<parameter key="Profile" value="Off"/>
+			<!--parameter key="Threads" value="2"/-->
+			<!--parameter key="MaxBufferSize" value="64Mb"/-->
+			<!--parameter key="InitialBufferSize" value="1Mb"/-->
+			<!--parameter key="BufferGrowthFactor" value="2"/-->
+			<!--parameter key="NumAggregators" value="0"/-->
+			<!--parameter key="StatsLevel" value="0"/-->
+			<!--parameter key="BurstBufferPath" value="/temp"/-->
+			<!--parameter key="BurstBufferVerbose" value="0"/-->
+		</engine>
+		<transport type="File">
+			<parameter key="Library" value="POSIX"/>
+		</transport>
+	</io>
+	<io name="BP_Read_CheckPoint">
+		<engine type="BP4">
+			<parameter key="Profile" value="Off"/>
+			<!--parameter key="Threads" value="2"/-->
+			<!--parameter key="MaxBufferSize" value="64Mb"/-->
+			<!--parameter key="InitialBufferSize" value="1Mb"/-->
+			<!--parameter key="BufferGrowthFactor" value="2"/-->
+			<!--parameter key="NumAggregators" value="0"/-->
+			<!--parameter key="StatsLevel" value="0"/-->
+			<!--parameter key="BurstBufferPath" value="/temp"/-->
+			<!--parameter key="BurstBufferVerbose" value="0"/-->
+		</engine>
+		<transport type="File">
+			<parameter key="Library" value="POSIX"/>
+		</transport>
+	</io>
+	<io name="BP_Read_Metinfo">
+		<engine type="BP4">
+			<parameter key="Profile" value="Off"/>
+			<!--parameter key="Threads" value="2"/-->
+			<!--parameter key="MaxBufferSize" value="64Mb"/-->
+			<!--parameter key="InitialBufferSize" value="1Mb"/-->
+			<!--parameter key="BufferGrowthFactor" value="2"/-->
+			<!--parameter key="NumAggregators" value="0"/-->
+			<!--parameter key="StatsLevel" value="0"/-->
+			<!--parameter key="BurstBufferPath" value="/temp"/-->
+			<!--parameter key="BurstBufferVerbose" value="0"/-->
+		</engine>
+		<transport type="File">
+			<parameter key="Library" value="POSIX"/>
+		</transport>
+	</io>
+</adios-config>

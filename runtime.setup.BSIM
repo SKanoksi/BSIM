@@ -1,0 +1,30 @@
+#
+#  2D Burgers' simulation
+#
+#  Version 0.1.0
+#  Copyright (c) 2024, Somrath Kanoksirirath <somrathk@gmail.com>
+#  All rights reserved under BSD 3-clause license.
+#
+#  bpls FILE -d VAR -n 16 -f "%3.3f"
+#
+
+start_time             = 2023-01-01_00-00-00
+total_simulation_time  = 00_02-00-00
+timestep_second        = 10
+timestep_divide_second = 1
+
+checkpoint_prefix   = BSIM_checkpoint_
+checkpoint_interval = 00_00-01-00
+
+number_of_grid_point = (201, 201)
+shared_edge_size     = (8, 8)
+grid_spacing         = (2.5, 2.5)
+global_pos0          = (0.0, 0.0)
+boundary_type        = 1
+
+num_process = (2,2)
+num_thread = 2
+
+iter_per_stdout  = 1
+adios2_config_file = ./component/BSIM_adios2_config.xml
+
